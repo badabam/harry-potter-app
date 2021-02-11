@@ -3,7 +3,6 @@ import createElement from '../../lib/createElement'
 
 export default function Button(text, onClick) {
   const el = createElement('button', { className: 'Button' }, text)
-
   el.addEventListener('click', onClick)
 
   function toggle(force) {
@@ -14,5 +13,10 @@ export default function Button(text, onClick) {
     el.innerText = text
   }
 
-  return { el, updateText, toggle }
+  return {
+    el,
+    updateText,
+    toggle,
+    text: el.innerText,
+  }
 }
