@@ -6,8 +6,8 @@ export default function Button(text, onClick) {
 
   el.addEventListener('click', onClick)
 
-  function toggle() {
-    el.classList.toggle('selected')
+  function toggle(force) {
+    el.classList.toggle('selected', force)
   }
 
   function updateText(text) {
