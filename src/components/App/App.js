@@ -9,6 +9,7 @@ export default function App() {
   const header = AppHeader('Harry Potter App')
   const houseFilter = HouseFilter(onFilterByHouse)
   const cardContainer = createElement('div')
+
   const app = createElement(
     'div',
     { className: 'App' },
