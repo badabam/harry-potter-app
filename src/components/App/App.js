@@ -1,19 +1,20 @@
-import AppHeader from './components/AppHeader'
-import getCharacters from './services/getCharacters'
-import Card from './components/Card'
-import createElement from './lib/createElement'
+import createElement from '../../lib/createElement'
+import getCharacters from '../../services/getCharacters'
+import AppHeader from '../AppHeader'
+import Card from '../Card'
+import './App.css'
 
 export default function App() {
   const header = AppHeader('Harry Potter App')
-  document.body.append(header)
+  const el = createElement('div', { className: 'App' }, header)
 
   getCharacters()
     .then(characters => createCards(characters))
     .catch(error => handleGetCharacterError(error))
 
   function createCards(characters) {
-    const cards = characters.map(character => Card(character.name))
-    document.body.append(...cards)
+    const cards = characters.map(character => Card(character))
+    el.append(...cards)
   }
 
   function handleGetCharacterError(error) {
@@ -22,6 +23,8 @@ export default function App() {
       { style: 'color: crimson;' },
       error.message
     )
-    document.body.append(errorMessage)
+    el.append(errorMessage)
   }
+
+  return el
 }
